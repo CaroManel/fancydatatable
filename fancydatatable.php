@@ -186,6 +186,7 @@ function fancydatatable_build( $atts ) {
 			$excerpt   = apply_filters( 'fancydatatable_the_excerpt', get_the_excerpt() );
 			$cat       = apply_filters( 'fancydatatable_the_categories', get_the_category_list(', ') );
 			$tags      = apply_filters( 'fancydatatable_the_tags', get_the_tag_list('',', ') );
+			$perm = get_permalink(get_the_ID());
 			?>
 			<tr data-id="<?php echo esc_attr( get_the_ID() ); ?>">
 				<td class="details-control"></td>
@@ -198,7 +199,7 @@ function fancydatatable_build( $atts ) {
 					}
 					?>
 				</td>
-				<td><?php echo esc_attr( $title ); ?></td>
+				<td><a href="<?php echo esc_url($perm); ?>" rel="bookmark" title="<?php echo esc_attr( $title ); ?>"><?php echo esc_attr( $title ); ?></a></td>
 				<td><?php echo wp_kses( $excerpt, $allow_html ); ?></td>
 				<td><?php echo wp_kses( $cat, $allow_html ); ?></td>
 				<td><?php echo wp_kses( $tags, $allow_html ); ?>
